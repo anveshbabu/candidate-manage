@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import "react-datepicker/dist/react-datepicker.css";
+import 'moment-timezone';
 import { Home, Profile } from "./pages";
 import {
   BrowserRouter as Router,
