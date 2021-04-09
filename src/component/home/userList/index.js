@@ -7,7 +7,8 @@ export class UserList extends React.Component {
         super(props);
 
         this.state = {
-            userList: []
+            userList: [],
+            isShow: false
 
         }
 
@@ -21,39 +22,52 @@ export class UserList extends React.Component {
 
 
 
-
+    handleShowTxt = () => {
+        let { isShow } = this.state;
+        this.setState({ isShow: !isShow })
+    }
 
     render() {
         let { userList } = this.props;
+        let { isShow } = this.state;
         return (
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">DOB</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Phone number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {userList.map(({name='-',gender='-',dob='-',pNum='-',aj='-'}, i) =>
-                        <tr key={i}>
-                            <th scope="row">1</th>
-                            <td>{name}</td>
-                            <td><Moment format="YYYY/MM/DD">
-                                {dob}
-                            </Moment></td>
-                            <td>{gender}</td>
-                            <td>{pNum}</td>
-                            <td>{aj}</td>
-                         
-                        </tr>
+            <>
+                <button type="submit" className="btn btn-primary" onClick={this.handleShowTxt}>{isShow ? 'Hide' : 'show'}</button>
 
-                    )}
+                {isShow ?
 
-                </tbody>
-            </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">DOB</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Phone number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {userList.map(({ userId = '-', title = '-', body = '-', pNum = '-', aj = '-' }, i) => (
+
+                                userId !== 2 ?
+                                    <tr key={i}>
+                                        <th scope="row">1</th>
+                                        <td>{userId}</td>
+                                        <td>{title}</td>
+                                        <td>{body}</td>
+                                        <td>{pNum}</td>
+                                        <td>{aj}</td>
+
+                                    </tr> : ''
+
+
+
+                            ))}
+
+                        </tbody>
+                    </table>
+                    : ''}
+            </>
 
         )
     }
