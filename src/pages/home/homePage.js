@@ -3,7 +3,11 @@ import React from 'react';
 import './home.scss';
 import { UserForm, UserList } from "../../component";
 import axios from 'axios';
+import { ThemeContext } from "../../sevices/themeContext";
 export class Home extends React.Component {
+
+  static contextType = ThemeContext;
+
 
   constructor(props) {
     super(props);
@@ -50,6 +54,15 @@ export class Home extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-12 mb-4">
+            <h4>theme:{this.context.theme}</h4>
+            <button type="button" class="btn btn-primary" onClick={()=>this.context.click.themeChange('primary')}>Primary</button>
+            <button type="button" class="btn btn-secondary" onClick={()=>this.context.click.themeChange('Secondary')}>Secondary</button>
+            <button type="button" class="btn btn-success" onClick={()=>this.context.click.themeChange('Success')}>Success</button>
+            <hr></hr>
+            <h4>language:{this.context.language}</h4>
+            <button type="button" class="btn btn-primary" onClick={()=>this.context.click.languagechange('EN')}>EN</button>
+            <button type="button" class="btn btn-secondary" onClick={()=>this.context.click.languagechange('MY')}>MY</button>
+            <button type="button" class="btn btn-success" onClick={()=>this.context.click.languagechange('TN')}>TN</button>
             <UserForm setUserList={this.handleSetUserList} />
           </div>
           <div className="col-12 mb-4">
