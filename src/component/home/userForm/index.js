@@ -2,6 +2,7 @@ import React from 'react';
 // import { TotalCount } from "./totalCount";
 import SimpleReactValidator from 'simple-react-validator';
 import DatePicker from "react-datepicker";
+import { NormalInput } from "../../index";
 export class UserForm extends React.Component {
 
   constructor(props) {
@@ -89,7 +90,8 @@ export class UserForm extends React.Component {
         <h2>User form</h2>
         <div className="form-group">
           <label >Name:</label>
-          <input type="text" className="form-control" placeholder="Enter name" value={userObj.name} name="name" onChange={this.handleInputChange} />
+          <NormalInput name='name' value={userObj.name} placeholder="Enter name"  onChange={this.handleInputChange}/>
+        
           {this.validator.message('name', userObj.name, 'required')}
         </div>
         <div className="form-group">

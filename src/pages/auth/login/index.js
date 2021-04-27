@@ -1,24 +1,10 @@
 import React from "react";
-
+import { history } from "../../../helpers";
 export class Login extends React.Component {
 
 
 
-  //on lode function
-  componentWillMount() {
- 
-  }
-
-
-
-
-
-
-    // handle input chnage 
-  handleInputChange = e => {
-   
-  }
-
+  
 
   
 
@@ -56,7 +42,7 @@ export class Login extends React.Component {
 
           <div className="row text-center">
             <div className="col-md-12">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" onClick={history.push('/home/')}>Submit</button>
             </div>
           </div>
         </div>
